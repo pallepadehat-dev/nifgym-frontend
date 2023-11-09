@@ -1,7 +1,15 @@
 ---
 title: Hold 1
+date: Onsdag - Torsdag
+start_adress: |
+  Start 19:00
+
+  Slut: 20:00
+
+  Adresse: Ahorn Alle 5, 4190 Ringsted 
+belob: '750'
 paymentLink: link.....
-coverImage: /dribbble-icon-1-logo-png-transparent.png
+coverImage: /forsideImage1.jpg
 instruktorName: Jens
 instruktorImage: /next.svg
 ---

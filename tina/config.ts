@@ -26,7 +26,7 @@ export default defineConfig({
         path: "content/posts",
         ui: {
           router: ({ document }) => {
-            return `/post/${document._sys.filename}`
+            return `/post/${document._sys.filename}`;
           },
         },
         fields: [
@@ -58,6 +58,24 @@ export default defineConfig({
             required: true,
           },
           {
+            name: "date",
+            type: "string",
+            label: "Dato",
+            description: "Dagen for hvornår der er træning.",
+          },
+          {
+            name: "start_adress",
+            type: "rich-text",
+            label: "Start Tid / Adresse",
+            description: "Start tid samt adresse.",
+          },
+          {
+            name: "belob",
+            type: "string",
+            label: "Beløb",
+            description: "Beløbeb på holdet.",
+          },
+          {
             type: "string",
             name: "paymentLink",
             label: "Betalings Link",
@@ -67,7 +85,7 @@ export default defineConfig({
             type: "image",
             label: "Cover Billede",
             name: "coverImage",
-            required: true
+            required: true,
           },
           {
             type: "string",
@@ -79,13 +97,38 @@ export default defineConfig({
             type: "image",
             label: "Instruktør Billede",
             name: "instruktorImage",
-            required: true
+            required: true,
           },
           {
             type: "rich-text",
             name: "body",
             label: "Hold Beskrivelse",
             isBody: true,
+          },
+        ],
+      },
+      {
+        name: "forsidehold",
+        label: "Forside Hold",
+        path: "content/forsidehold",
+        fields: [
+          {
+            type: "string",
+            name: "title",
+            label: "Hold Navn",
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: "image",
+            label: "Hold Billede",
+            name: "forsideholdimage",
+            required: true,
+          },
+          {
+            name: "holdbeskrivelse",
+            type: "rich-text",
+            label: "Hold Beskrivelse",
           },
         ],
       },
