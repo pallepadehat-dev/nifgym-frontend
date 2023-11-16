@@ -41,7 +41,7 @@ const KontaktForm = () => {
   }
 
   return (
-    <div className="w-full h-auto bg-gray-100 flex justify-center pb-5">
+    <div className="w-full h-auto bg-gray-100 flex justify-center pb-5 pt-5">
       <div className="w-1/2">
         <div className="flex flex-col items-center justify-center pb-8 w-full">
           <h1 className="text-3xl font-semibold lg:text-5xl">

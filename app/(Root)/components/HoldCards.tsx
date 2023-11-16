@@ -1,13 +1,12 @@
-"use client";
 import client from "@/tina/__generated__/client";
 import Image from "next/image";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 
 const HoldCards = async () => {
-  const data = await client.queries.forsideholdConnection();
+  const data = await client.queries.createholdConnection();
   return (
     <>
-      {data.data.forsideholdConnection.edges?.map((item) => {
+      {data.data.createholdConnection.edges?.map((item) => {
         return (
           <div
             className="bg-white p-6 shadow-2xl rounded-lg cursor-pointer hover:scale-105 transition-all duration-300"
