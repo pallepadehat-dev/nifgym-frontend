@@ -42,9 +42,9 @@ const KontaktForm = () => {
 
   return (
     <div className="w-full h-auto bg-gray-100 flex justify-center pb-5 pt-5">
-      <div className="w-1/2">
+      <div className="w-full md:w-1/2">
         <div className="flex flex-col items-center justify-center pb-8 w-full">
-          <h1 className="text-3xl font-semibold lg:text-5xl">
+          <h1 className="text-2xl font-semibold lg:text-5xl">
             Kontakt Formular
           </h1>
           <p className="text-lg text-gray-600">Vi svarer hurtigst muligt</p>

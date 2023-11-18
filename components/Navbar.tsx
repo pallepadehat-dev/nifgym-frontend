@@ -28,14 +28,9 @@ const Navbar = () => {
       active: pathname === "/hold",
     },
     {
-      label: "Instruktør",
-      href: "/instruktor",
-      active: pathname === "/instruktor",
-    },
-    {
-      label: "Bestyrelse",
-      href: "/bestyrelse",
-      active: pathname === "/bestyrelse",
+      label: "Teamet",
+      href: "/teamet",
+      active: pathname === "/teamet",
     },
     {
       label: "Kontakt",
@@ -50,12 +45,16 @@ const Navbar = () => {
   ];
   return (
     <nav className="p-3 flex flex-row items-center space-x-4 lg:space-x-6 bg-gray-800">
-      <div className="mr-auto flex flex-row gap-2 items-center">
+      <Link
+        href="/"
+        className="mr-auto flex flex-row gap-2 items-center cursor-pointer"
+      >
         <div className="relative h-14 w-12">
           <Image src="/logo.png" alt="logo" fill />
         </div>
         <h1 className="text-lg font-bold text-white">NIF Gymnastik</h1>
-      </div>
+      </Link>
+
       <div className="md:hidden bg-gray-800">
         <Sheet>
           <SheetTrigger>
@@ -96,7 +95,7 @@ const Navbar = () => {
             key={route.href}
             href={route.href}
             className={cn(
-              "text-sm font-medium transition-colors hover:text-secondary",
+              "text-md font-medium transition-colors hover:text-secondary",
               route.active ? "text-white" : "text-gray-400"
             )}
           >
