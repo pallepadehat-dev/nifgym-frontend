@@ -10,7 +10,7 @@ betaling:
       -------------------------------------
     paymentLink: >-
       https://www.conventus.dk/dataudv/www/new_tilmelding.php?foreningsid=774&gruppe=%20862359&skjul_nyt_medlem=0&skjul_allerede_medlem=0
-coverImage: /3cd8cc55-b687-4211-b54e-3e15967d68f1IMG_4758.jpg
+coverImage: /Depositphotos_21527353_xl-2015-scaled.jpg
 instruktors:
   - instruktorname: Tina Bruun Jørgensen
     instruktorimage: /instruktør/Tina-1.jpeg
