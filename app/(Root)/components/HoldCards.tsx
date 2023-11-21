@@ -18,7 +18,7 @@ const HoldCards = async () => {
                   src={item.node.forsideholdimage} // Use the correct property
                   alt="image"
                   fill
-                  className="rounded-lg"
+                  className="rounded-lg object-cover"
                 />
               ) : (
                 <p>No image available</p>

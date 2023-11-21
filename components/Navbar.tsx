@@ -44,7 +44,7 @@ const Navbar = () => {
     },
   ];
   return (
-    <nav className="p-3 flex flex-row items-center space-x-4 lg:space-x-6 bg-gray-800">
+    <nav className="p-3 flex flex-row items-center space-x-4 lg:space-x-6 bg-gray-800 z-10">
       <Link
         href="/"
         className="mr-auto flex flex-row gap-2 items-center cursor-pointer"

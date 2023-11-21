@@ -1,10 +1,16 @@
+import Footer from "@/components/Footer";
+import KontaktForm from "@/components/KontaktForm";
 import Navbar from "@/components/Navbar";
 
 const KontaktPage = () => {
   return (
-    <>
-      <Navbar /> <h1>Hello KontaktPage</h1>
-    </>
+    <div className="flex flex-col min-h-screen">
+      <Navbar />
+      <KontaktForm />
+      <div className="mt-auto">
+        <Footer />
+      </div>
+    </div>
   );
 };
 

@@ -14,104 +14,124 @@ import {
 import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
 import { Textarea } from "./ui/textarea";
-import Image from "next/image";
+import { LoaderIcon, Send } from "lucide-react";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 const formSchema = z.object({
-  firstname: z.string(),
-  email: z.string().email({
-    message: "DU skal bruge en gyldig mail adresse.",
+  firstname: z.string().min(1, {
+    message: "Du skal udfylde dit navn og efternavn.",
   }),
-  message: z.string().min(10, {
-    message: "Du skal skrive mindst 10 ord.",
+  email: z.string().email({
+    message: "Du skal bruge en gyldig email adresse",
+  }),
+  message: z.string().min(1, {
+    message: "Du skal beskrive dit problem.",
+  }),
+  subject: z.string().min(1, {
+    message: "Du skal skrive et subject!",
   }),
 });
 
 const KontaktForm = () => {
+  const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       firstname: "",
       email: "",
       message: "",
+      subject: "",
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    // await axios.post("/api/send", values);
+    toast.success("Vi har modtaget din mail.");
+    router.replace("/");
+    form.reset();
   }
 
-  return (
-    <div className="w-full h-auto bg-gray-100 flex justify-center pb-5 pt-5">
-      <div className="w-full md:w-1/2">
-        <div className="flex flex-col items-center justify-center pb-8 w-full">
-          <h1 className="text-2xl font-semibold lg:text-5xl">
-            Kontakt Formular
-          </h1>
-          <p className="text-lg text-gray-600">Vi svarer hurtigst muligt</p>
-        </div>
+  const { isSubmitting, isValid } = form.formState;
 
-        <div className="container mx-auto flex flex-col md:flex-row justify-between items-center md:items-start">
-          <div className="w-full lg:w-2/3 pr-0 md:pr-8 mb-6 md:mb-0">
-            <Form {...form}>
-              <form
-                onSubmit={form.handleSubmit(onSubmit)}
-                className="space-y-4"
-              >
-                <FormField
-                  control={form.control}
-                  name="firstname"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Navn</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Fornavn & Efternavn" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>E-Mail</FormLabel>
-                      <FormControl>
-                        <Input placeholder="eksample@mail.dk" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="message"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Besked</FormLabel>
-                      <FormControl>
-                        <Textarea
-                          placeholder="Skriv din besked her"
-                          {...field}
-                          style={{ resize: "vertical" }}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <Button type="submit">Indsend</Button>
-              </form>
-            </Form>
-          </div>
-          <div className="md:w-1/2 lg:w-1/3 relative h-64 md:h-[auto] mt-6 md:mt-0 hidden lg:block">
-            <div className="w-full h-full rounded-xl overflow-hidden">
-              <div style={{ position: "relative", paddingBottom: "100%" }}>
-                <Image src="/forsideImage3.jpg" alt="image" fill />
-              </div>
-            </div>
-          </div>
-        </div>
+  return (
+    <div className="w-full flex justify-center items-center pb-5 pt-5 flex-col">
+      <div className="flex flex-col gap-2 items-center">
+        <h1 className="text-2xl font-semibold lg:text-5xl">Kontakt Formular</h1>
+        <p className="text-lg text-gray-600 lg:text-xl">
+          Vi svarer hurtigtst muligt.
+        </p>
+      </div>
+      <div className="w-1/2">
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)}>
+            <FormField
+              control={form.control}
+              name="firstname"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Fornavn</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Dit fornavn" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="subject"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Subject</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Kort overskrift" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>E-mail</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Skirv din email her"
+                      type="email"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="message"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Beskrivelse</FormLabel>
+                  <FormControl>
+                    <Textarea placeholder="Skriv din besked her." {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <Button
+              type="submit"
+              className="mt-2 flex flex-row gap-2 items-center"
+              disabled={!isValid}
+            >
+              {isSubmitting && <LoaderIcon className="w-4 h-4 animate-spin" />}
+              {!isSubmitting && <Send className="w-4 h-4" />} <span>Send</span>
+            </Button>
+          </form>
+        </Form>
       </div>
     </div>
   );

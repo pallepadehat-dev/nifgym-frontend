@@ -29,7 +29,9 @@ const HoldKort = async () => {
                 </div>
               )}
             </div>
-            <h2 className="text-xl font-semibold mt-4">{item?.node?.title}</h2>
+            <h2 className="text-xl lg:text-sm font-semibold mt-4">
+              {item?.node?.title}
+            </h2>
             <Link key={item?.node?.title} href={`/hold/${item?.node?.id}`}>
               <Button className="w-full mt-4 hover:scale-105 transition-all duration-300">
                 Læs mere

@@ -19,7 +19,7 @@ const HeroSection = () => {
         </video>
       </div>
 
-      <div className="container relative mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center justify lg:mt-24 z-10">
+      <div className="relative  flex flex-col md:flex-row items-center md:mt-24 lg:mt-24 z-10 lg:pl-20">
         <div className="md:w-1/2 lg:w-2/3 md:pr-8 mb-6 md:mb-0">
           <div className="md:max-w-md lg:max-w-lg">
             <h1 className="text-2xl md:text-4xl lg:text-7xl font-bold text-white mb-4">
