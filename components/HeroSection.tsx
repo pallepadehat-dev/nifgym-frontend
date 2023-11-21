@@ -11,6 +11,8 @@ const HeroSection = () => {
           autoPlay
           loop
           muted
+          playsInline
+          controls={false}
           className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500"
           style={{ opacity: 1 }}
         >
